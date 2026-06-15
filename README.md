@@ -1,1 +1,1 @@
-Proyecto práctico de Pentesting: auditoría completa de una máquina Linux vulnerable, incluyendo enumeración de servicios, explotación de aplicaciones web, escalada de privilegios y redacción de un WriteUp técnico con evidencias y análisis de impacto
+Proyecto práctico de Pentesting: auditoría completa de una máquina Linux vulnerable, incluyendo enumeración de servicios, explotación de aplicaciones web, escalada de privilegios, con WriteUp técnico con evidencias y análisis de impacto
