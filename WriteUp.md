@@ -188,6 +188,8 @@ id	"ff757fad-e8b9-4429-94b2-9913c86e7565"
 createdAt	"2026-06-16T10:37:31.274Z"
 updatedAt	"2026-06-16T10:37:31.274Z"
 ```
+
+```bash
 └─$ ssh dfinkelstein@10.128.143.249                                   
 ** WARNING: connection is not using a post-quantum key exchange algorithm.
 ** This session may be vulnerable to "store now, decrypt later" attacks.
@@ -285,6 +287,7 @@ Matching Defaults entries for dfinkelstein on tnightmarebc:
 User dfinkelstein may run the following commands on tnightmarebc:
     (root) NOPASSWD: /usr/local/bin/nodered-toggle, /usr/local/bin/nodered-toggle *
 dfinkelstein@tnightmarebc:~$ 
+```
 
 ## Explotación
 
