@@ -81,30 +81,35 @@ SERVER NOT VULNERABLE: 1
 
 
 ```bash
-severity	"low"
-source	"IDS"
-status	"todo"
-description	"Se detecto una conexión sin certificado válido -> 85[.]188[.]1[.]133"
+en http://10.128.175.117:3030/api/tasks
+0	
+title	"Proceso Ejecución"
+severity	"critical"
+source	"AIDS"
+status	"investigating"
+description	"Se detectó tráfico potencial de salida, Alerta TCP $HOME_NET -> 162[.]243[.]103[.]246"
 tags	
-0	"http"
-1	"port"
+0	"exec"
+1	"auth"
 quiz	
 todo>investigating	
-question	"¿Cuál es el Fingerprint de SSH?"
+question	"¿Qué es Emotet?"
 answer	
-0	"674713a7763f226779c2a3e9d2dc0cd3eb4a2c6fec7063e3395ef6565c5b4c94"
+0	"troyano polimórfico"
+1	"malware troyano polimórfico"
 investigating>contained	
-question	"¿Cuál es servicio principal del servidor?"
+question	"Según AlphaSOC, ¿cuál es el vector de entrada?"
 answer	
-0	"ftp"
-1	"FTP"
+0	"Phishing"
+1	"phishing"
 contained>closed	
-question	"¿Cuál es el ASN del servidor?"
+question	"¿Cuál es el último CVE del servidor?"
 answer	
-0	"AS34387"
-id	"9299a4b6-af24-4895-a276-f23a5c91b918"
+0	"CVE-2025-49812"
+id	"80c22939-177b-49d8-92c4-6c196e97fee6"
 createdAt	"2026-06-16T10:37:31.274Z"
-updatedAt	"2026-06-16T10:37:31.274Z"
+updatedAt	"2026-06-16T11:26:20.126Z"
+1	{ title: "Certificado invalido", severity: "low", source: "IDS", … }
 2	
 title	"Proceso Ejecución"
 severity	"low"
