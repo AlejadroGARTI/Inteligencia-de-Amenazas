@@ -188,6 +188,104 @@ id	"ff757fad-e8b9-4429-94b2-9913c86e7565"
 createdAt	"2026-06-16T10:37:31.274Z"
 updatedAt	"2026-06-16T10:37:31.274Z"
 ```
+└─$ ssh dfinkelstein@10.128.143.249                                   
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+dfinkelstein@10.128.143.249's password: 
+Linux tnightmarebc 5.10.0-23-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
+Last login: Fri Oct 31 17:20:09 2025 from 172.16.162.1
+dfinkelstein@tnightmarebc:~$ ls
+help.txt
+dfinkelstein@tnightmarebc:~$ cat help.txt
+Contenido seguro para dfinkelstein
+Si controlas Node Red controlas el mundo.
+
+[*] Utiliza el servicio para seguir adelante: start|stop|restart|status
+
+- Activar Servicio: sudo /usr/local/bin/nodered-toggle start
+- Parar Servicio: sudo /usr/local/bin/nodered-toggle stop
+dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle start
+✅ Node-RED activo
+dfinkelstein@tnightmarebc:~$ ls
+help.txt
+dfinkelstein@tnightmarebc:~$ sudo su
+[sudo] password for dfinkelstein: 
+Sorry, user dfinkelstein is not allowed to execute '/usr/bin/su' as root on tnightmarebc.
+dfinkelstein@tnightmarebc:~$ ls -la
+total 20
+drwx------ 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .
+drwxr-xr-x 5 root         root         4096 oct 31  2025 ..
+lrwxrwxrwx 1 dfinkelstein dfinkelstein    9 oct 31  2025 .bash_history -> /dev/null
+-rw-r--r-- 1 dfinkelstein dfinkelstein   87 oct 31  2025 .bashrc
+-rw------- 1 dfinkelstein dfinkelstein  270 oct 31  2025 help.txt
+drwxr-xr-x 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .local
+dfinkelstein@tnightmarebc:~$ cd /dev/null
+-bash: cd: /dev/null: No es un directorio
+dfinkelstein@tnightmarebc:~$ whoami
+dfinkelstein
+dfinkelstein@tnightmarebc:~$ ls
+help.txt
+dfinkelstein@tnightmarebc:~$ sudo node -e 'require("child_process").spawn("/bin/bash", {stdio: [0, 1, 2]})'
+[sudo] password for dfinkelstein: 
+Sorry, try again.
+[sudo] password for dfinkelstein: 
+Sorry, try again.
+[sudo] password for dfinkelstein: 
+sudo: 3 incorrect password attempts
+dfinkelstein@tnightmarebc:~$ 
+dfinkelstein@tnightmarebc:~$ sudo node -e 'require("child_process").spawn("/bin/bash", {stdio: [0, 1, 2]})'
+[sudo] password for dfinkelstein: 
+Sorry, user dfinkelstein is not allowed to execute '/usr/bin/node -e require("child_process").spawn("/bin/bash", {stdio: [0, 1, 2]})' as root on tnightmarebc.
+dfinkelstein@tnightmarebc:~$ ^C
+dfinkelstein@tnightmarebc:~$ cd .local
+dfinkelstein@tnightmarebc:~/.local$ ls
+share
+dfinkelstein@tnightmarebc:~/.local$ cat share
+cat: share: Es un directorio
+dfinkelstein@tnightmarebc:~/.local$ ..
+-bash: ..: orden no encontrada
+dfinkelstein@tnightmarebc:~/.local$ .
+-bash: .: argumento de nombre de fichero requerido
+.: modo de empleo: . fichero [argumentos]
+dfinkelstein@tnightmarebc:~/.local$ cd ..
+dfinkelstein@tnightmarebc:~$ cd .bash_history
+-bash: cd: .bash_history: No es un directorio
+dfinkelstein@tnightmarebc:~$ cd .bashrc
+-bash: cd: .bashrc: No es un directorio
+dfinkelstein@tnightmarebc:~$ ls -la .local
+total 12
+drwxr-xr-x 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .
+drwx------ 3 dfinkelstein dfinkelstein 4096 oct 31  2025 ..
+drwx------ 3 dfinkelstein dfinkelstein 4096 oct 31  2025 share
+dfinkelstein@tnightmarebc:~$ cd .local/.config
+-bash: cd: .local/.config: No existe el fichero o el directorio
+dfinkelstein@tnightmarebc:~$ cat help.txt
+Contenido seguro para dfinkelstein
+Si controlas Node Red controlas el mundo.
+
+[*] Utiliza el servicio para seguir adelante: start|stop|restart|status
+
+- Activar Servicio: sudo /usr/local/bin/nodered-toggle start
+- Parar Servicio: sudo /usr/local/bin/nodered-toggle stop
+dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle status
+● node-red.service - Node-RED controlled service
+     Loaded: loaded (/etc/systemd/system/node-red.service; disabled; vendor preset: enabled)
+     Active: activating (auto-restart) (Result: exit-code) since Tue 2026-06-16 18:03:59 CEST; 1s ago
+    Process: 3951 ExecStart=/usr/bin/node-red --userDir /home/nightmare/.node-red --port 1880 (code=exited, status=1/FAILURE)                                                                                       
+   Main PID: 3951 (code=exited, status=1/FAILURE)
+        CPU: 1.341s
+
+jun 16 18:03:59 tnightmarebc systemd[1]: node-red.service: Consumed 1.341s CPU time.
+dfinkelstein@tnightmarebc:~$ 
+dfinkelstein@tnightmarebc:~$ sudo -l
+Matching Defaults entries for dfinkelstein on tnightmarebc:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User dfinkelstein may run the following commands on tnightmarebc:
+    (root) NOPASSWD: /usr/local/bin/nodered-toggle, /usr/local/bin/nodered-toggle *
+dfinkelstein@tnightmarebc:~$ 
+
 ## Explotación
 
 ## Escalada de privilegios
