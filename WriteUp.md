@@ -350,5 +350,30 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 ## Escalada de privilegios
 
+![](Evidencias_Visuales/)
+
 ## Flags encontradas
+```bash
+dev@tnightmarebc:~$ ls -la                                          
+ls -la
+total 44
+drwx------ 5 dev  dev  4096 oct 31  2025 .
+drwxr-xr-x 5 root root 4096 oct 31  2025 ..
+lrwxrwxrwx 1 root root    9 abr 23  2023 .bash_history -> /dev/null
+-rw------- 1 dev  dev   220 ene 15  2023 .bash_logout
+-rw------- 1 dev  dev  3520 oct 31  2025 .bashrc
+-rw-r--r-- 1 root root    3 oct 31  2025 flows*.json
+drwxr-xr-x 3 dev  dev  4096 may 16  2023 .local
+drwxr-xr-x 4 dev  dev  4096 jun 17 12:56 .node-red
+drwxr-xr-x 3 dev  dev  4096 may 16  2023 .npm
+-rw------- 1 dev  dev   807 ene 15  2023 .profile
+-rw-r--r-- 1 dev  dev    66 may 16  2023 .selected_editor
+-r-------- 1 dev  dev    66 abr  1  2025 user.txt
+dev@tnightmarebc:~$ cat user.txt
+cat user.txt
+27 3b 2d 2d 68 61 76 65 20 69 20 62 65 65 6e 20 70 77 6e 65 64 3f
+dev@tnightmarebc:~$ echo "27 3b 2d 2d 68 61 76 65 20 69 20 62 65 65 6e 20 70 77 6e 65 64 3f" | xxd -r -p
+<69 20 62 65 65 6e 20 70 77 6e 65 64 3f" | xxd -r -p
+';--have i been pwned?dev@tnightmarebc:~$ ^C
+```
 
