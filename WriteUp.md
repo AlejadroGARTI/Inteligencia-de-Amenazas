@@ -290,6 +290,63 @@ dfinkelstein@tnightmarebc:~$
 ```
 
 ## Explotación
+```bash
+┌──(kali㉿kali)-[~]
+└─$ ssh dfinkelstein@10.128.154.75
+The authenticity of host '10.128.154.75 (10.128.154.75)' can't be established.
+ED25519 key fingerprint is: SHA256:3dqq7f/jDEeGxYQnF2zHbpzEtjjY49/5PvV5/4MMqns
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:12: [hashed name]
+    ~/.ssh/known_hosts:13: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.128.154.75' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+dfinkelstein@10.128.154.75's password: 
+Linux tnightmarebc 5.10.0-23-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
+Last login: Fri Oct 31 17:20:09 2025 from 172.16.162.1
+dfinkelstein@tnightmarebc:~$ ls -la
+total 20
+drwx------ 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .
+drwxr-xr-x 5 root         root         4096 oct 31  2025 ..
+lrwxrwxrwx 1 dfinkelstein dfinkelstein    9 oct 31  2025 .bash_history -> /dev/null
+-rw-r--r-- 1 dfinkelstein dfinkelstein   87 oct 31  2025 .bashrc
+-rw------- 1 dfinkelstein dfinkelstein  270 oct 31  2025 help.txt
+drwxr-xr-x 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .local
+
+```
+
+```bash
+dfinkelstein@tnightmarebc:~$ cat help.txt
+Contenido seguro para dfinkelstein
+Si controlas Node Red controlas el mundo.
+
+[*] Utiliza el servicio para seguir adelante: start|stop|restart|status
+
+- Activar Servicio: sudo /usr/local/bin/nodered-toggle start
+- Parar Servicio: sudo /usr/local/bin/nodered-toggle stop
+dfinkelstein@tnightmarebc:~$ 
+
+```
+
+```bash
+root:x:0:0:root:/root:/bin/bash
+dev:x:1000:1000:dev,,,:/home/dev:/bin/bash
+nightmare:x:1001:1001:,,,:/home/nightmare:/bin/bash
+dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
+
+```
+
+```bash
+```
+
+```bash
+```
+
+```bash
+```
+
 
 ## Escalada de privilegios
 
