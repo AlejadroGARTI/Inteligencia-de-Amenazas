@@ -350,7 +350,7 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 ## Escalada de privilegios
 
-![](Evidencias_Visuales/)
+![](Evidencias_Visuales/inyección_NODE-RED)
 
 ## Flags encontradas
 ```bash
