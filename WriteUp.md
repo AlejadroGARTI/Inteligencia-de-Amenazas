@@ -142,7 +142,7 @@ Permitiendo ingresar al usuario dev, del cual no se posee la contraseña. Antes 
 #### Opción #1: GFTOBins y shell inversa
 Mediante el uso de GFTOBins encontramos un comando que permite usar Node.js para abrir una shell del sistema y que esta establezca conexión a la terminal del atacante. De la siguiente manera: 
 
-Se obtuvo una reverse shell mediante Netcat, estableciendo conexión desde el sistema objetivo hacia el atacante. Pero esta shell no tiene la capacidad de ejecutar comandos.
+Se obtiene una reverse shell mediante Netcat, estableciendo conexión desde el sistema objetivo hacia el atacante. Pero esta shell no tiene la capacidad de ejecutar comandos.
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nc -lvnp 4444
