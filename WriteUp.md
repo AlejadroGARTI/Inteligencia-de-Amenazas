@@ -247,6 +247,7 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 ## Escalada de privilegios
 Gracias a NODE-RED, el comando que se puede ver en la impagen, funciona cuando se inyecta porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
 Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
+![](Evidencias_Visuales/inyección_NODE-RED)
 
 ```bash
 ┌──(kali㉿kali)-[~]
@@ -257,8 +258,6 @@ bash: no se puede establecer el grupo de proceso de terminal (337): Función ioc
 bash: no hay control de trabajos en este shell
 dev@tnightmarebc:~$ 
 ```
-
-![](Evidencias_Visuales/inyección_NODE-RED)
 
 ## Flags encontradas
 ```bash
