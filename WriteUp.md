@@ -66,7 +66,7 @@ La contraseña esta en el 3030, pero en este caso se requirió una investigació
 ---
 ## Explotación
 
-###  Entramos usando el usuario y contraseña
+Entramos usando el usuario y contraseña
 ```bash
 └─$ ssh dfinkelstein@10.128.143.249                                   
 ** WARNING: connection is not using a post-quantum key exchange algorithm.
@@ -77,7 +77,7 @@ Linux tnightmarebc 5.10.0-23-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
 Last login: Fri Oct 31 17:20:09 2025 from 172.16.162.1
 ```
 
-###  Inspeccionamos todos los usuarios
+Inspeccionamos todos los usuarios, en donde destacan estos 4 usuarios del sistema:
 ```bash
 root:x:0:0:root:/root:/bin/bash
 dev:x:1000:1000:dev,,,:/home/dev:/bin/bash
