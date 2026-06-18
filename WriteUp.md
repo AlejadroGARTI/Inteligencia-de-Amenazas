@@ -273,3 +273,60 @@ aHR0cHM6Ly9vcGVuLnNwb3RpZnkuY29tL2ludGwtZXMvdHJhY2svNjN5MmFMMmRUNnp6dzhGT1NMYU5y
 root@tnightmarebc:~# echo "aHR0cHM6Ly9vcGVuLnNwb3RpZnkuY29tL2ludGwtZXMvdHJhY2svNjN5MmFMMmRUNnp6dzhGT1NMYU5ycD9zaT1hMDI2ZGRhMTRjNzE0ZWNm" | base64 -d
 ((https://open.spotify.com/intl-es/track/63y2aL2dT6zzw8FOSLaNrp?si=a026dda14c714ecfroot@tnightmarebc:~#))
 ```
+
+## Análisis de Impacto
+
+### Impacto de Seguridad Identificado
+
+Durante la auditoría de seguridad realizada, se identificaron cuatro hallazgos que afectan significativamente a la seguridad del sistema. La combinación de estas vulnerabilidades permite a un atacante comprometer completamente el servidor.
+
+#### Hallazgo #1: Node-RED sin autenticación
+
+Se detectó una instancia de Node-RED accesible sin mecanismos de autenticación. Esta configuración permite que un atacante interactúe con los flujos de trabajo y ejecute comandos arbitrarios mediante nodos como `exec`.
+
+Como consecuencia, un atacante puede obtener ejecución remota de comandos (RCE), comprometer el sistema de forma inmediata, instalar malware, acceder a información sensible o provocar la pérdida total de control del servidor.
+
+#### Hallazgo #2: Permisos sudoers inseguros
+
+Se identificó una configuración insegura en el fichero `sudoers` que permite la ejecución de Node.js con privilegios elevados sin necesidad de contraseña.
+
+Mediante la ejecución de código JavaScript utilizando `child_process`, un atacante puede ejecutar comandos del sistema operativo como root y obtener una shell privilegiada. Esto permite modificar configuraciones críticas, instalar puertas traseras y acceder a toda la información almacenada en el sistema.
+
+#### Hallazgo #3: Múltiples servicios web expuestos
+
+Durante la fase de reconocimiento se identificaron diversos servicios accesibles desde la red.
+
+La exposición innecesaria de servicios incrementa la superficie de ataque y facilita las tareas de enumeración por parte de un atacante, permitiéndole identificar tecnologías, versiones y posibles vulnerabilidades asociadas para planificar ataques posteriores.
+
+#### Hallazgo #4: Sistema operativo desactualizado
+
+El servidor ejecuta una versión de Debian con actualizaciones de seguridad pendientes.
+
+La falta de parches expone el sistema a vulnerabilidades conocidas y documentadas públicamente (CVEs), aumentando el riesgo de explotación mediante herramientas automatizadas y exploits disponibles públicamente.
+
+### Cadena de Compromiso Identificada
+
+La explotación observada durante la auditoría sigue la siguiente secuencia:
+
+1. Acceso a la interfaz de Node-RED expuesta en el puerto 1880.
+2. Ejecución de comandos mediante nodos con capacidad de interacción con el sistema operativo.
+3. Obtención de acceso como usuario con permisos limitados.
+4. Escalada de privilegios mediante la configuración insegura de `sudoers`.
+5. Obtención de una shell interactiva con privilegios de root.
+
+Esta cadena de ataque permite el compromiso completo del servidor en un tiempo estimado inferior a cinco minutos.
+
+### Impacto para la Organización
+
+* **Confidencialidad:** posible acceso no autorizado a información sensible.
+* **Integridad:** modificación o eliminación de datos y configuraciones críticas.
+* **Disponibilidad:** interrupción de servicios o despliegue de ransomware.
+
+### Recomendaciones Prioritarias
+
+1. Restringir el acceso a Node-RED y habilitar autenticación.
+2. Eliminar permisos `NOPASSWD` innecesarios en la configuración de `sudoers`.
+3. Aplicar las actualizaciones de seguridad pendientes del sistema operativo.
+4. Revisar y deshabilitar cuentas de usuario que no sean necesarias.
+5. Reducir la exposición de servicios accesibles desde la red.
+
