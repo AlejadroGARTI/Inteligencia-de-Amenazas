@@ -314,7 +314,7 @@ cat user.txt
 27 3b 2d 2d 68 61 76 65 20 69 20 62 65 65 6e 20 70 77 6e 65 64 3f
 dev@tnightmarebc:~$ echo "27 3b 2d 2d 68 61 76 65 20 69 20 62 65 65 6e 20 70 77 6e 65 64 3f" | xxd -r -p
 <69 20 62 65 65 6e 20 70 77 6e 65 64 3f" | xxd -r -p
-';--have i been pwned?dev@tnightmarebc:~$ ^C
+((';--have i been pwned?))dev@tnightmarebc:~$ ^C
 ```
 
 ### Flag de tnightmarebc
@@ -331,25 +331,10 @@ drwxr-xr-x 4 nightmare nightmare  4096 oct 31  2025 .node-red
 drwxr-xr-x 3 nightmare nightmare  4096 oct 31  2025 .npm
 -rw-r--r-- 1 nightmare nightmare   807 oct 31  2025 .profile
 root@tnightmarebc:/home/nightmare# cat .nightmare
-https://youtu.be/oxkj7sdlXyg?si=hPg0G1LgzhQ7KdLl
+((https://youtu.be/oxkj7sdlXyg?si=hPg0G1LgzhQ7KdLl))
 ```
 
 ### Flag de root
-```bash
-root@tnightmarebc:/home/nightmare# ls -la
-total 48
-drwx------ 4 nightmare nightmare  4096 oct 31  2025 .
-drwxr-xr-x 5 root      root       4096 oct 31  2025 ..
--rw-r--r-- 1 nightmare nightmare   220 oct 31  2025 .bash_logout
--rw-r--r-- 1 nightmare nightmare  3526 oct 31  2025 .bashrc
--rw-r--r-- 1 root      root         49 oct 31  2025 .nightmare
--rwxr-xr-x 1 nightmare nightmare 14416 abr  1  2025 nightmare
-drwxr-xr-x 4 nightmare nightmare  4096 oct 31  2025 .node-red
-drwxr-xr-x 3 nightmare nightmare  4096 oct 31  2025 .npm
--rw-r--r-- 1 nightmare nightmare   807 oct 31  2025 .profile
-root@tnightmarebc:/home/nightmare# cat .nightmare
-https://youtu.be/oxkj7sdlXyg?si=hPg0G1LgzhQ7KdLl
-```
 
 ```bash
 root@tnightmarebc:~# ls -la
