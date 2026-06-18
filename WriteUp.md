@@ -35,40 +35,16 @@ PORT     STATE SERVICE VERSION
 |_http-title: Net Defender \xE2\x80\x94 Sim
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
----
 
 
-RegreSSHion (CVE-2024-6387): Note that while this is a major OpenSSH vulnerability, Debian 11 Bullseye was officially confirmed not affected as this specific regression was introduced in OpenSSH 8.5p1
-```bash
-┌──(kali㉿kali)-[~/CVE-2024-6387]
-└─$ python3 CVE-2024-6387.py scan -T 10.130.152.121 -p 22
-                                                     
-   .aMMMb  dMMMMb  dMMMMMP dMMMMb  .dMMMb  .dMMMb  dMP dMP                                             
-  dMP"dMP dMP.dMP dMP     dMP dMP dMP" VP dMP" VP dMP dMP                                              
- dMP dMP dMMMMP" dMMMP   dMP dMP  VMMMb   VMMMb  dMMMMMP                                               
-dMP.aMP dMP     dMP     dMP dMP dP .dMP dP .dMP dMP dMP                                                
-VMMMP" dMP     dMMMMMP dMP dMP  VMMMP"  VMMMP" dMP dMP                                                 
-                                                                                                       
-   ReggreSSHion CVE-2024-6387 Vulnerability Checker / Exploiter                                        
-   2.0 - Optimized by @Kz                                                                              
+### Análisis de las principales vulnerabilidades 
 
-🚨Servers likely vulnerable: 0
-🛡️ Servers not vulnerable: 1
-   [+] Server at 10.130.152.121 (N/A):22 (running SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1)
-🛡️ Servers likely not vulnerable (possible LoginGraceTime remediation): 0
-⚠️ Servers with unknown SSH version: 0
-Summary:
-📊 Total scanned hosts: 1
-🚨 Total vulnerable hosts: 0
-🛡️  Total not vulnerable hosts: 1
-🛡️  Total likely not vulnerable hosts: 0
-⚠️  Total unknown hosts: 0
-🔒 Servers with port 22 closed: 0
-```
+#### RegreSSHion (No afectado)
+RegreSSHion (CVE-2024-6387): Aunque se trata de una vulnerabilidad importante en OpenSSH, Debian 11 Bullseye fue confirmado oficialmente como no afectado, ya que esta regresión específica fue introducida en OpenSSH 8.5p1
+
 ```bash
 ┌──(kali㉿kali)-[~/CVE-2024-6387-Vulnerability-Checker]
 └─$ python3 CVE-2024-6387-Vulnerability-Checker.py 10.130.152.121
-
 
   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                                        
   + CVE-2024-6387 Vulnerability Checker                       +                                        
@@ -76,15 +52,18 @@ Summary:
   + Filipi Pires - Threat Researcher & Cybersecurity Advocate +                                        
   + @senhasegura / @filipipires                               +                                        
   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                                        
-                                                                                                       
-
 
 SERVER NOT VULNERABLE: 1
 [SAFE] -> 10.130.152.121:22-> Running SSH-2.0-OpenSSH_8.4p1 Debian-5+deb11u1
-
 ```
+#### Vulnerabilidades intrínsecas a NODE-RED (Afectado)
+El uso de los nodos exec e inject en Node-RED presenta una de las mayores vulnerabilidades del sistema ya que la Ejecución Remota de Comandos (RCE) permite, que si un atacante accede al editor web (que por defecto no tiene autenticación) en este caso en el puerto 1880 previamente escaneado, puede arrastrar un nodo exec a un flujo, configurarlo para ejecutar código malicioso del sistema operativo y desplegarlo.
+Por ello tenemos los siguiente problemas principales:
 
-
+- Acceso sin autenticación: La interfaz web (puerto 1880) está abierta sin contraseña de fábrica.El nodo exec: Este nodo ejecuta comandos directamente en el sistema operativo subyacente.
+- Un atacante puede introducir comandos como rm -rf / o instalar malware.
+- El nodo inject: Se usa para activar el nodo exec de forma remota, manual o programada, sin necesidad de interactuar con hardware físico.
+- Impacto severo: Si Node-RED corre como administrador o root, el atacante toma el control total del equipo (lo cual es un riesgo crítico documentado en incidentes como CVE-2025-41656)
 
 ```bash
 en http://10.128.175.117:3030/api/tasks
@@ -190,7 +169,7 @@ User dfinkelstein may run the following commands on tnightmarebc:
     (root) NOPASSWD: /usr/local/bin/nodered-toggle, /usr/local/bin/nodered-toggle *
 dfinkelstein@tnightmarebc:~$ 
 ```
-
+---
 ## Explotación
 ```bash
 ┌──(kali㉿kali)-[~]
@@ -252,7 +231,7 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 ## Escalada de privilegios
 
-###Inyección mediante NODE-RED
+### Inyección mediante NODE-RED
 Gracias a NODE-RED, el comando que se puede ver en la imágen, funciona cuando se inyecta el comando, porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
 Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
 
