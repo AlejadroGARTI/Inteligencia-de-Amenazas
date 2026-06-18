@@ -9,15 +9,6 @@ Adicionalmente, se detectaron varios servicios web basados en Node.js ejecutánd
 La enumeración no mostró otros puertos abiertos relevantes, sugiriendo una superficie de ataque relativamente reducida, aunque con múltiples aplicaciones web expuestas que podrían requerir revisión de seguridad.
 
 ```bash
-Not shown: 65531 closed tcp ports (reset)
-PORT     STATE SERVICE
-22/tcp   open  ssh
-1880/tcp open  vsat-control
-3030/tcp open  arepa-cas
-4040/tcp open  yo-main
-```
-
-```bash
 Host is up (0.032s latency).
 Not shown: 65531 closed tcp ports (reset)
 PORT     STATE SERVICE VERSION
