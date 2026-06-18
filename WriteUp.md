@@ -64,6 +64,7 @@ El usuario se encuentra en el 4040 y es: D.Finkelstein.
 La contraseña esta en el 3030, pero en este caso se requirió una investigación más profunda de la página para poder resolver el ejercicio, en donde las respuestas a las preguntas se encuentran al inspeccionar la página web, en donde se encuentra la ruta: `http://10.128.175.117:3030/api/tasks`. Cabe resaltar que esta es una forma de simplificar el proceso, pero las respuestas deben encontrarse de igual forma para entender el contexto del ejercicio. Al finalizar obtenemos que la contraseña es: Mr.0oG13_B00g13
 
 ---
+---
 ## Explotación
 
 Entramos usando el usuario y contraseña
@@ -127,6 +128,7 @@ dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle start
 ✅ Node-RED activo
 ```
 
+---
 ---
 ## Escalada de privilegios
 
@@ -206,7 +208,8 @@ bash: no se puede establecer el grupo de proceso de terminal (323): Función ioc
 bash: no hay control de trabajos en este shell
 root@tnightmarebc:/home/dev#
 ```
-
+---
+---
 ## Flags encontradas
 
 ### Flag de dev
@@ -281,25 +284,25 @@ root@tnightmarebc:~# echo "aHR0cHM6Ly9vcGVuLnNwb3RpZnkuY29tL2ludGwtZXMvdHJhY2svN
 
 Durante la auditoría de seguridad realizada, se identificaron cuatro hallazgos que afectan significativamente a la seguridad del sistema. La combinación de estas vulnerabilidades permite a un atacante comprometer completamente el servidor.
 
-#### Hallazgo #1: Node-RED sin autenticación
+#### Hallazgo #1: Node-RED sin autenticación. Riesgo: Crítico
 
 Se detectó una instancia de Node-RED accesible sin mecanismos de autenticación. Esta configuración permite que un atacante interactúe con los flujos de trabajo y ejecute comandos arbitrarios mediante nodos como `exec`.
 
 Como consecuencia, un atacante puede obtener ejecución remota de comandos (RCE), comprometer el sistema de forma inmediata, instalar malware, acceder a información sensible o provocar la pérdida total de control del servidor.
 
-#### Hallazgo #2: Permisos sudoers inseguros
+#### Hallazgo #2: Permisos sudoers inseguros. Riesgo: Crítico
 
 Se identificó una configuración insegura en el fichero `sudoers` que permite la ejecución de Node.js con privilegios elevados sin necesidad de contraseña.
 
 Mediante la ejecución de código JavaScript utilizando `child_process`, un atacante puede ejecutar comandos del sistema operativo como root y obtener una shell privilegiada. Esto permite modificar configuraciones críticas, instalar puertas traseras y acceder a toda la información almacenada en el sistema.
 
-#### Hallazgo #3: Múltiples servicios web expuestos
+#### Hallazgo #3: Múltiples servicios web expuestos. Riesgo: Crítico
 
 Durante la fase de reconocimiento se identificaron diversos servicios accesibles desde la red.
 
 La exposición innecesaria de servicios incrementa la superficie de ataque y facilita las tareas de enumeración por parte de un atacante, permitiéndole identificar tecnologías, versiones y posibles vulnerabilidades asociadas para planificar ataques posteriores.
 
-#### Hallazgo #4: Sistema operativo desactualizado
+#### Hallazgo #4: Sistema operativo desactualizado. Riesgo: Crítico
 
 El servidor ejecuta una versión de Debian con actualizaciones de seguridad pendientes.
 
