@@ -66,9 +66,7 @@ La contraseña esta en el 3030, pero en este caso se requirió una investigació
 ---
 ## Explotación
 
-### Paso #1: Entrada al usuario dfinkelstein y activación del servicio NODE-RED
-
-Entramos usando el usuario y contraseña
+###  Entramos usando el usuario y contraseña
 ```bash
 └─$ ssh dfinkelstein@10.128.143.249                                   
 ** WARNING: connection is not using a post-quantum key exchange algorithm.
@@ -79,7 +77,7 @@ Linux tnightmarebc 5.10.0-23-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
 Last login: Fri Oct 31 17:20:09 2025 from 172.16.162.1
 ```
 
-Inspeccionamos todos los usuarios
+###  Inspeccionamos todos los usuarios
 ```bash
 root:x:0:0:root:/root:/bin/bash
 dev:x:1000:1000:dev,,,:/home/dev:/bin/bash
@@ -88,7 +86,7 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 ```
 
-Verificamos que permisos puede ejecutar el usuario como root
+### Verificamos que permisos puede ejecutar el usuario como root
 ```bash
 dfinkelstein@tnightmarebc:~$ sudo -l
 Matching Defaults entries for dfinkelstein on tnightmarebc:
@@ -99,7 +97,7 @@ User dfinkelstein may run the following commands on tnightmarebc:
 dfinkelstein@tnightmarebc:~$ 
 ```
 
-Verificamos que hay disponible dentro del usuario, incluidos los archivos ocultos
+###  Verificamos que hay disponible dentro del usuario, incluidos los archivos ocultos
 ```bash
 dfinkelstein@tnightmarebc:~$ ls -la
 total 20
@@ -111,7 +109,7 @@ lrwxrwxrwx 1 dfinkelstein dfinkelstein    9 oct 31  2025 .bash_history -> /dev/n
 drwxr-xr-x 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .local
 ```
 
-Abrimos el archivo help, en donde se encuentra la información para ejecutar el servicio NODE-RED (aunque usando el paso de comprobación de permisos root, ya habiamos visto el comando ejecutable para activar NODE-RED)
+ ### Abrimos el archivo help, en donde se encuentra la información para ejecutar el servicio NODE-RED (aunque usando el paso de comprobación de permisos root, ya habiamos visto el comando ejecutable para activar NODE-RED)
 ```bash
 dfinkelstein@tnightmarebc:~$ cat help.txt
 Contenido seguro para dfinkelstein
@@ -123,7 +121,7 @@ Si controlas Node Red controlas el mundo.
 - Parar Servicio: sudo /usr/local/bin/nodered-toggle stop
 ```
 
-Activamos NODE-RED
+### Activamos NODE-RED
 ```bash
 dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle start
 ✅ Node-RED activo
