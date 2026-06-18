@@ -179,7 +179,11 @@ dev@tnightmarebc:~$ sudo node -e 'require("child_process").spawn("/bin/bash", {s
 root@tnightmarebc:/home/dev# 
 ```
 
-#### Opción #2: Comando
+#### Opción #2: Root Shell mediante sudo NOPASSWD de Node.js y ejecución de execSync
+
+En este segundo caso, tenemos que mediante sudo /usr/bin/node -e, se ejecuta código de JavaScript que importa el módulo child_process y lanza una shell interactiva (/bin/bash -i) con execSync, heredando así los privilegios de root.
+
+Como resultado, se obtiene una shell de root, demostrando cómo la ejecución de Node.js con permisos elevados puede permitir la ejecución arbitraria de comandos del sistema y comprometer completamente el host.
 
 ```bash
 ┌──(kali㉿kali)-[~]
