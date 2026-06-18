@@ -245,8 +245,9 @@ dfinkelstein:x:1002:1002:,,,:/home/dfinkelstein:/bin/bash
 
 
 ## Escalada de privilegios
-Gracias a NODE-RED, el comando que se puede ver en la impagen, funciona cuando se inyecta porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
+Gracias a NODE-RED, el comando que se puede ver en la imágen, funciona cuando se inyecta el comando, porque el sistema ejecuta el input del usuario directamente en el sistema operativo mediante nodos como exec, sin una validación o sanitización adecuada, lo que permite que el string sea interpretado por Bash y se establezca la conexión inversa hacia el atacante.
 Permitiendo ingresar al usuario dev, del cual no se posee la contraseña.
+
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
 ```bash
