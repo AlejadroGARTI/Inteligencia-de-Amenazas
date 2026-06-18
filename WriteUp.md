@@ -2,6 +2,12 @@
 
 ## Reconocimiento
 
+Durante el escaneo de red se identificaron múltiples puertos TCP abiertos en el sistema. El puerto 22 corresponde al servicio SSH (OpenSSH 8.4p1), utilizado para administración remota segura.
+
+Adicionalmente, se detectaron varios servicios web basados en Node.js ejecutándose en los puertos 1880, 3030 y 4040, los cuales exponen interfaces web asociadas a Node-RED y aplicaciones internas (SIEM Taskboard y Net Defender Sim). Esto indica la presencia de servicios de gestión y monitorización accesibles vía HTTP.
+
+La enumeración no mostró otros puertos abiertos relevantes, sugiriendo una superficie de ataque relativamente reducida, aunque con múltiples aplicaciones web expuestas que podrían requerir revisión de seguridad.
+
 ```bash
 Not shown: 65531 closed tcp ports (reset)
 PORT     STATE SERVICE
