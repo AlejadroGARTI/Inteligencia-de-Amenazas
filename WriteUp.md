@@ -27,8 +27,7 @@ PORT     STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-
-### Análisis de las principales vulnerabilidades 
+### Análisis de las principales vulnerabilidades a partir de los servicios encontrados
 
 #### RegreSSHion (No afectado)
 RegreSSHion (CVE-2024-6387): Aunque se trata de una vulnerabilidad importante en OpenSSH, Debian 11 Bullseye fue confirmado oficialmente como no afectado, ya que esta regresión específica fue introducida en OpenSSH 8.5p1
@@ -51,15 +50,18 @@ SERVER NOT VULNERABLE: 1
 El uso de los nodos exec e inject en Node-RED presenta una de las mayores vulnerabilidades del sistema ya que la Ejecución Remota de Comandos (RCE) permite, que si un atacante accede al editor web (que por defecto no tiene autenticación) en este caso en el puerto 1880 previamente escaneado, puede arrastrar un nodo exec a un flujo, configurarlo para ejecutar código malicioso del sistema operativo y desplegarlo.
 Por ello tenemos los siguiente problemas principales:
 
-- Acceso sin autenticación: La interfaz web (puerto 1880) está abierta sin contraseña de fábrica.El nodo exec: Este nodo ejecuta comandos directamente en el sistema operativo subyacente.
-- Un atacante puede introducir comandos como rm -rf / o instalar malware.
+- Acceso sin autenticación: La interfaz web (puerto 1880) está abierta sin contraseña de fábrica.
+- El nodo exec: Este nodo ejecuta comandos directamente en el sistema operativo subyacente en donde un atacante puede introducir comandos como rm -rf / o instalar malware.
 - El nodo inject: Se usa para activar el nodo exec de forma remota, manual o programada, sin necesidad de interactuar con hardware físico.
 - Impacto severo: Si Node-RED corre como administrador o root, el atacante toma el control total del equipo (lo cual es un riesgo crítico documentado en incidentes como CVE-2025-41656)
 
-```bash
-en http://10.128.175.117:3030/api/tasks
+---
 
-```
+### Optención del usuario y la contraseña
+En este caso, el usuario y la contraseña se encuentran en los dos puertos restantes.
+El usuario se encuentra en el 4040 y es: D.Finkelstein
+La contraseña esta en el 3030, pero en este caso se requirió una investigación más profunda de la página para poder resolver el ejercicio, en donde las respuestas a las preguntas se encuentran al inspeccionar la página web `http://10.128.175.117:3030/api/tasks`. Cabe resaltar que esta es una forma de simplificar el proceso, pero las respuestas deben encontrarse de igual forma para entender el contexto del ejercicio. Al finalizar obtenemos que la contraseña es: Mr.0oG13_B00g13
+
 
 ```bash
 └─$ ssh dfinkelstein@10.128.143.249                                   
