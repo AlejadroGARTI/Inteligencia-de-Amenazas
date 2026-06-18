@@ -273,7 +273,8 @@ aHR0cHM6Ly9vcGVuLnNwb3RpZnkuY29tL2ludGwtZXMvdHJhY2svNjN5MmFMMmRUNnp6dzhGT1NMYU5y
 root@tnightmarebc:~# echo "aHR0cHM6Ly9vcGVuLnNwb3RpZnkuY29tL2ludGwtZXMvdHJhY2svNjN5MmFMMmRUNnp6dzhGT1NMYU5ycD9zaT1hMDI2ZGRhMTRjNzE0ZWNm" | base64 -d
 ((https://open.spotify.com/intl-es/track/63y2aL2dT6zzw8FOSLaNrp?si=a026dda14c714ecfroot@tnightmarebc:~#))
 ```
-
+---
+---
 ## Análisis de Impacto
 
 ### Impacto de Seguridad Identificado
