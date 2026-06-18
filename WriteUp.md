@@ -61,7 +61,7 @@ Por ello tenemos los siguiente problemas principales:
 En este caso, el usuario y la contraseña se encuentran en los dos puertos restantes.
 El usuario se encuentra en el 4040 y es: D.Finkelstein.
 
-La contraseña esta en el 3030, pero en este caso se requirió una investigación más profunda de la página para poder resolver el ejercicio, en donde las respuestas a las preguntas se encuentran al inspeccionar la página web `http://10.128.175.117:3030/api/tasks`. Cabe resaltar que esta es una forma de simplificar el proceso, pero las respuestas deben encontrarse de igual forma para entender el contexto del ejercicio. Al finalizar obtenemos que la contraseña es: Mr.0oG13_B00g13
+La contraseña esta en el 3030, pero en este caso se requirió una investigación más profunda de la página para poder resolver el ejercicio, en donde las respuestas a las preguntas se encuentran al inspeccionar la página web, en donde se encuentra la ruta: `http://10.128.175.117:3030/api/tasks`. Cabe resaltar que esta es una forma de simplificar el proceso, pero las respuestas deben encontrarse de igual forma para entender el contexto del ejercicio. Al finalizar obtenemos que la contraseña es: Mr.0oG13_B00g13
 
 
 ```bash
