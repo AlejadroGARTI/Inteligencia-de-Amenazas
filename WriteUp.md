@@ -318,7 +318,7 @@ La explotación observada durante la auditoría sigue la siguiente secuencia:
 4. Escalada de privilegios mediante la configuración insegura de `sudoers`.
 5. Obtención de una shell interactiva con privilegios de root.
 
-Esta cadena de ataque permite el compromiso completo del servidor en un tiempo estimado inferior a cinco minutos.
+Esta cadena de ataque permite el compromiso completo del servidor.
 
 ### Impacto para la Organización
 
