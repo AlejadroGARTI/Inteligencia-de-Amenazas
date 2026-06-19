@@ -1,4 +1,4 @@
-<img width="429" height="137" alt="image" src="https://github.com/user-attachments/assets/80f7212a-21a1-413f-a804-d8ed4cc2d370" /># Auditoría de Seguridad
+# Auditoría de Seguridad
 
 ## Reconocimiento
 
